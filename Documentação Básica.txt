@@ -1,0 +1,21 @@
+Arquitetura Model-Routes-Service-Controller
+
+Model          = Modelo de dados.
+Routes         = Rotas de acesso da API.
+Controllers    = Funções Middleware para interagir com as rotas.
+Services(DAO)  = DAO.
+
+
+O link raiz da API, não funciona porque deriva.
+
+    https://us-central1-fairday-5a340.cloudfunctions.net/api
+
+Padrões de resposta HTTP:
+    https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status
+
+Produtos
+    Rotas:
+        //Retorna uma lista de produtos
+        https://us-central1-fairday-5a340.cloudfunctions.net/api/products/listproducts
+        //Insere um produto
+        https://us-central1-fairday-5a340.cloudfunctions.net/api/products/insertproducts
