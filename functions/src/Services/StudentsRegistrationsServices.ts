@@ -2,7 +2,7 @@ import * as admin from "firebase-admin";
 import { StudentRegistration } from "../Model/StudentRegistration";
 import { DocumentReference, DocumentSnapshot, Firestore } from "@google-cloud/firestore";
 
-export function getStudentsRegistrationsByIdFromFirestore(idOfStudentRegistration:string):Promise<any>{
+export function getStudentRegistrationByIdFromFirestore(idOfStudentRegistration:string):Promise<any>{
     return new Promise<any>((resolve,reject)=>{
         const db:Firestore = admin.firestore();
 

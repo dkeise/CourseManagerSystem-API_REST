@@ -2,7 +2,7 @@ import * as admin from "firebase-admin";
 import { AvaliationGrade } from "../Model/AvaliationGrade";
 import { DocumentReference, DocumentSnapshot, Firestore } from "@google-cloud/firestore";
 
-export function getAvaliationGradeByIdFromFirestore(idOfAvaliationGrade:string):Promise<any>{
+export function getAvaliationsGradeByIdFromFirestore(idOfAvaliationGrade:string):Promise<any>{
     return new Promise<any>((resolve,reject)=>{
         const db:Firestore = admin.firestore();
 
@@ -55,7 +55,7 @@ export function insertAvaliationGradeToFirestore(avaliationGrade:AvaliationGrade
     );
 }
 
-export function updateAvaliationGradesById(idOfAvaliationGrade:any,updates:any):Promise<any>{
+export function updateAvaliationGradeById(idOfAvaliationGrade:any,updates:any):Promise<any>{
     return new Promise<any>((resolve,reject)=>{
         const db = admin.firestore();
         db.collection("avaliationGrades").doc(idOfAvaliationGrade).update(updates)
