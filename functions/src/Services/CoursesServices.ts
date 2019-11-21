@@ -55,7 +55,7 @@ export function insertCourseToFirestore(course:Course):Promise<any> {
     );
 }
 
-export function updateCoursesById(idOfCourse:any,updates:any):Promise<any>{
+export function updateCourseById(idOfCourse:any,updates:any):Promise<any>{
     return new Promise<any>((resolve,reject)=>{
         const db = admin.firestore();
         db.collection("courses").doc(idOfCourse).update(updates)

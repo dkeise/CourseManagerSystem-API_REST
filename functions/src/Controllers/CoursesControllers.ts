@@ -1,4 +1,4 @@
-import { insertCourseToFirestore, getCourseByIdFromFirestore, getAllCoursesFromFirestore, updateCoursesById } from "../Services/CoursesServices";
+import { insertCourseToFirestore, getCourseByIdFromFirestore, getAllCoursesFromFirestore, updateCourseById } from "../Services/CoursesServices";
 import { Request, Response, NextFunction } from "express";
 
 
@@ -30,7 +30,7 @@ export function getCourses(req:Request,res:Response,next:NextFunction){
 // }
 
  export function updateCourse(req:Request,res:Response,next:NextFunction){
-    updateCoursesById(req.params.id,req.body)
+    updateCourseById(req.params.id,req.body)
     .then(value=>{res.status(204).send(value)})
     .catch(erro=>{res.status(400).send(erro)});
 }

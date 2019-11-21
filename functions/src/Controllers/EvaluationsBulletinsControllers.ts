@@ -1,4 +1,4 @@
-import { insertEvaluationBulletinToFirestore, getEvaluationBulletinByIdFromFirestore, getAllEvaluationBulletinsFromFirestore, updateEvaluationBulletinsById } from "../Services/EvaluationsBulletinsServices";
+import { insertEvaluationBulletinToFirestore, getEvaluationBulletinByIdFromFirestore, getAllEvaluationBulletinsFromFirestore, updateEvaluationBulletinById } from "../Services/EvaluationsBulletinsServices";
 import { Request, Response, NextFunction } from "express";
 
 
@@ -30,7 +30,7 @@ export function getEvaluationsBulletins(req:Request,res:Response,next:NextFuncti
 // }
 
  export function updateEvaluationBulletin(req:Request,res:Response,next:NextFunction){
-    updateEvaluationBulletinsById(req.params.id,req.body)
+    updateEvaluationBulletinById(req.params.id,req.body)
     .then(value=>{res.status(204).send(value)})
     .catch(erro=>{res.status(400).send(erro)});
 }

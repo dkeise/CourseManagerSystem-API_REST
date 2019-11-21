@@ -55,7 +55,7 @@ export function insertStudentRegistrationToFirestore(studentRegistration:Student
     );
 }
 
-export function updateStudentsRegistrationsById(idOfStudentsRegistrations:any,updates:any):Promise<any>{
+export function updateStudentRegistrationById(idOfStudentsRegistrations:any,updates:any):Promise<any>{
     return new Promise<any>((resolve,reject)=>{
         const db = admin.firestore();
         db.collection("studentsRegistrations").doc(idOfStudentsRegistrations).update(updates)

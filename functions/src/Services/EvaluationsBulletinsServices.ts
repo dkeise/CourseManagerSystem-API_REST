@@ -55,7 +55,7 @@ export function insertEvaluationBulletinToFirestore(evaluationBulletin:Evaluatio
     );
 }
 
-export function updateEvaluationBulletinsById(idOfEvaluationBulletin:any,updates:any):Promise<any>{
+export function updateEvaluationBulletinById(idOfEvaluationBulletin:any,updates:any):Promise<any>{
     return new Promise<any>((resolve,reject)=>{
         const db = admin.firestore();
         db.collection("evaluationBulletins").doc(idOfEvaluationBulletin).update(updates)

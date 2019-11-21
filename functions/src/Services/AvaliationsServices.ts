@@ -55,7 +55,7 @@ export function insertAvaliationToFirestore(avaliation:Avaliation):Promise<any> 
     );
 }
 
-export function updateAvaliationsById(idOfAvaliation:any,updates:any):Promise<any>{
+export function updateAvaliationById(idOfAvaliation:any,updates:any):Promise<any>{
     return new Promise<any>((resolve,reject)=>{
         const db = admin.firestore();
         db.collection("avaliations").doc(idOfAvaliation).update(updates)

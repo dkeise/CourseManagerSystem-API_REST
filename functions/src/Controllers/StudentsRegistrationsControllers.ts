@@ -1,4 +1,4 @@
-import { insertStudentRegistrationToFirestore, getStudentRegistrationByIdFromFirestore, getAllStudentsRegistrationsFromFirestore, updateStudentsRegistrationsById } from "../Services/StudentsRegistrationsServices";
+import { insertStudentRegistrationToFirestore, getStudentRegistrationByIdFromFirestore, getAllStudentsRegistrationsFromFirestore, updateStudentRegistrationById } from "../Services/StudentsRegistrationsServices";
 import { Request, Response, NextFunction } from "express";
 
 
@@ -30,7 +30,7 @@ export function getStudentsRegistrations(req:Request,res:Response,next:NextFunct
 // }
 
  export function updateStudentRegistration(req:Request,res:Response,next:NextFunction){
-    updateStudentsRegistrationsById(req.params.id,req.body)
+    updateStudentRegistrationById(req.params.id,req.body)
     .then(value=>{res.status(204).send(value)})
     .catch(erro=>{res.status(400).send(erro)});
 }

@@ -1,4 +1,4 @@
-import { insertAvaliationToFirestore, getAvaliationByIdFromFirestore, getAllAvaliationsFromFirestore, updateAvaliationsById } from "../Services/AvaliationsServices";
+import { insertAvaliationToFirestore, getAvaliationByIdFromFirestore, getAllAvaliationsFromFirestore, updateAvaliationById } from "../Services/AvaliationsServices";
 import { Request, Response, NextFunction } from "express";
 
 
@@ -30,7 +30,7 @@ export function getAvaliations(req:Request,res:Response,next:NextFunction){
 // }
 
  export function updateAvaliation(req:Request,res:Response,next:NextFunction){
-    updateAvaliationsById(req.params.id,req.body)
+    updateAvaliationById(req.params.id,req.body)
     .then(value=>{res.status(204).send(value)})
     .catch(erro=>{res.status(400).send(erro)});
 }
