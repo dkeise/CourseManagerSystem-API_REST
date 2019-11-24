@@ -1,6 +1,6 @@
 import * as admin from "firebase-admin";
 import { Teacher } from "../Model/Teacher";
-import { DocumentReference, DocumentSnapshot, Firestore } from "@google-cloud/firestore";
+import { DocumentReference, DocumentSnapshot, Firestore, QuerySnapshot } from "@google-cloud/firestore";
 
 export function getTeacherByIdFromFirestore(idOfTeacher:string):Promise<any>{
     return new Promise<any>((resolve,reject)=>{
@@ -13,6 +13,25 @@ export function getTeacherByIdFromFirestore(idOfTeacher:string):Promise<any>{
                 resolve(teacherDoc);
             }else{
                 reject(document);
+            }
+        }).catch(err=>{
+            reject(err);
+        });
+    });
+}
+
+export function getTeacherByEmailFromFirestore(id:string, email: string):Promise<any>{
+    return new Promise<any>((resolve,reject)=>{
+        const db = admin.firestore();
+        db.collection("Teachers").doc(id).get().then((document:DocumentSnapshot) => {
+            if(document.exists){
+                const teacherDoc = new Teacher(document.data());
+                if (teacherDoc.email == email){
+                    teacherDoc.id    = document.id;
+                    resolve(teacherDoc);
+                } else {
+                    reject(document);
+                }
             }
         }).catch(err=>{
             reject(err);

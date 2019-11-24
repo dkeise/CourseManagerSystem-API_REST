@@ -1,4 +1,4 @@
-import { insertStudentToFirestore, getAllStudentsFromFirestore, getStudentByIdFromFirestore, updateStudentById } from "../Services/StudentsServices";
+import { insertStudentToFirestore, getAllStudentsFromFirestore, getStudentByIdFromFirestore, updateStudentById, getStudentByLogInFromFirestore} from "../Services/StudentsServices";
 import { Request, Response, NextFunction } from "express";
 
 
@@ -12,6 +12,12 @@ export function insertStudent(req:Request,res:Response,next:NextFunction){
 
 export function getStudentById(req:Request,res:Response,next:NextFunction){
     getStudentByIdFromFirestore(req.params.id)
+        .then(value=>{res.status(200).send(value)})
+        .catch(err=>{res.status(500).send(err)});
+}
+
+export function getStudentByLogIn(req:Request,res:Response,next:NextFunction){
+    getStudentByLogInFromFirestore(req.params.email)
         .then(value=>{res.status(200).send(value)})
         .catch(err=>{res.status(500).send(err)});
 }
