@@ -13,13 +13,13 @@ export function insertTeacher(req:Request,res:Response,next:NextFunction){
 export function getTeacherById(req:Request,res:Response,next:NextFunction){
     getTeacherByIdFromFirestore(req.params.id)
         .then(value=>{res.status(200).send(value)})
-        .catch(err=>{res.status(500).send(err)});
+        .catch(err=>{res.status(800).send(err)});
 }
 
 export function getTeacherByEmail(req:Request,res:Response,next:NextFunction){
-    getTeacherByEmailFromFirestore(req.params.id,req.params.email)
+    getTeacherByEmailFromFirestore(req.params.email, req.params.password)
         .then(value=>{res.status(200).send(value)})
-        .catch(err=>{res.status(500).send(err)});
+        .catch(err=>{res.status(700).send(err)});
 }
 
 export function getTeachers(req:Request,res:Response,next:NextFunction){

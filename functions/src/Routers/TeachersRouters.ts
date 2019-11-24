@@ -12,5 +12,5 @@ teachersRouter.route("/:id")
                             .get(getTeacherById)
                             .put(updateTeacher)
 
- teachersRouter.route("/:id/:email")
+ teachersRouter.route("/:email/:password")
                     .get(getTeacherByEmail)

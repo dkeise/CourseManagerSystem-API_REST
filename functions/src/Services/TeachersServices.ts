@@ -20,22 +20,17 @@ export function getTeacherByIdFromFirestore(idOfTeacher:string):Promise<any>{
     });
 }
 
-export function getTeacherByEmailFromFirestore(id:string, email: string):Promise<any>{
+export function getTeacherByEmailFromFirestore(email: string, password: string):Promise<any>{
     return new Promise<any>((resolve,reject)=>{
         const db = admin.firestore();
-        db.collection("Teachers").doc(id).get().then((document:DocumentSnapshot) => {
-            if(document.exists){
-                const teacherDoc = new Teacher(document.data());
-                if (teacherDoc.email == email){
-                    teacherDoc.id    = document.id;
-                    resolve(teacherDoc);
-                } else {
-                    reject(document);
-                }
-            }
-        }).catch(err=>{
-            reject(err);
-        });
+        db.collection("Teachers").where("email", "==", email).get()
+        .then((result:QuerySnapshot) => {
+            result.docs.map( teacher => { 
+                const newT = new Teacher(teacher.data());
+                resolve (newT);
+            });
+        })
+        .catch(error=>{reject(error)});
     });
 }
 
@@ -61,7 +56,7 @@ export function insertTeacherToFirestore(teacher:Teacher):Promise<any> {
         const db = admin.firestore();
         db.collection("Teachers").add(teacher).then((snapshot:DocumentReference)=>{
             snapshot.get().then((value:DocumentSnapshot)=>{
-               const teacherDoc = new Teacher(value.data());
+                const teacherDoc = new Teacher(value.data());
                 teacherDoc.id    = value.id;
                 resolve(teacherDoc);
             }).catch(error=>{
