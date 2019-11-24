@@ -1,4 +1,4 @@
-import { insertTeacherToFirestore, getAllTeachersFromFirestore, getTeacherByIdFromFirestore, updateTeacherById, getTeacherByEmailFromFirestore } from "../Services/TeachersServices";
+import { insertTeacherToFirestore, getAllTeachersFromFirestore, getTeacherByIdFromFirestore, updateTeacherById, getTeacherByLoginFromFirestore } from "../Services/TeachersServices";
 import { Request, Response, NextFunction } from "express";
 
 
@@ -16,8 +16,8 @@ export function getTeacherById(req:Request,res:Response,next:NextFunction){
         .catch(err=>{res.status(800).send(err)});
 }
 
-export function getTeacherByEmail(req:Request,res:Response,next:NextFunction){
-    getTeacherByEmailFromFirestore(req.params.email, req.params.password)
+export function getTeacherByLogin(req:Request,res:Response,next:NextFunction){
+    getTeacherByLoginFromFirestore(req.params.email, req.params.password)
         .then(value=>{res.status(200).send(value)})
         .catch(err=>{res.status(700).send(err)});
 }

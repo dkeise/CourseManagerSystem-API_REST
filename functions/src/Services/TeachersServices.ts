@@ -20,15 +20,18 @@ export function getTeacherByIdFromFirestore(idOfTeacher:string):Promise<any>{
     });
 }
 
-export function getTeacherByEmailFromFirestore(email: string, password: string):Promise<any>{
+export function getTeacherByLoginFromFirestore(email: string, password: string):Promise<any>{
     return new Promise<any>((resolve,reject)=>{
         const db = admin.firestore();
         db.collection("Teachers").where("email", "==", email).get()
         .then((result:QuerySnapshot) => {
             result.docs.map( teacher => { 
                 const newT = new Teacher(teacher.data());
-                resolve (newT);
+                if (newT.password == password) {
+                    resolve (newT);
+                }
             });
+            reject(result);
         })
         .catch(error=>{reject(error)});
     });

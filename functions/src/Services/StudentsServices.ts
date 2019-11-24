@@ -1,7 +1,7 @@
 import * as admin from "firebase-admin";
 import { Student } from "../Model/Student";
 import * as functions from "firebase-functions";
-import { DocumentReference, DocumentSnapshot, Firestore} from "@google-cloud/firestore";
+import { DocumentReference, DocumentSnapshot, Firestore, QuerySnapshot} from "@google-cloud/firestore";
 
 admin.initializeApp(functions.config().firebase);
 
@@ -23,21 +23,21 @@ export function getStudentByIdFromFirestore(idOfStudent:string):Promise<any>{
     });
 }
 
-export function getStudentByLogInFromFirestore(email:string):Promise<any>{
+export function getStudentByLoginFromFirestore(email: string, password: string):Promise<any>{
     return new Promise<any>((resolve,reject)=>{
-        const db:Firestore = admin.firestore();
-            db.collection("students").where("email","==",email).get()
-            .then((result) => {
-                result.docs.map( student => {
-                    const newStudent = new Student(student.data())
-                   // if(newStudent.password == password){
-                        resolve(newStudent);
-                   // }
-                })
-            }).catch(error=>{
-              reject(error);
-             });
-        });
+        const db = admin.firestore();
+        db.collection("Students").where("email", "==", email).get()
+        .then((result:QuerySnapshot) => {
+            result.docs.map( teacher => { 
+                const newT = new Student(teacher.data());
+                if (newT.password == password) {
+                    resolve (newT);
+                }
+            });
+            reject(result);
+        })
+        .catch(error=>{reject(error)});
+    });
 }
 
 export function getAllStudentsFromFirestore():Promise<any> {

@@ -1,5 +1,5 @@
 
-import { getTeacherById, insertTeacher, getTeachers, updateTeacher, getTeacherByEmail } from '../Controllers/TeachersControllers';
+import { getTeacherById, insertTeacher, getTeachers, updateTeacher, getTeacherByLogin } from '../Controllers/TeachersControllers';
 import { Router } from 'express';
 
 export const teachersRouter = Router();
@@ -12,5 +12,5 @@ teachersRouter.route("/:id")
                             .get(getTeacherById)
                             .put(updateTeacher)
 
- teachersRouter.route("/:email/:password")
-                    .get(getTeacherByEmail)
+teachersRouter.route("/:email/:password")
+                    .get(getTeacherByLogin)

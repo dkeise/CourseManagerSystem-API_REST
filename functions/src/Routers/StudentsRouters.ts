@@ -1,5 +1,5 @@
 
-import { getStudentById, insertStudent, getStudents, updateStudent, getStudentByLogIn } from '../Controllers/StudentsControllers';
+import { getStudentById, insertStudent, getStudents, updateStudent, getStudentByLogin } from '../Controllers/StudentsControllers';
 import { Router } from 'express';
 
 export const studentsRouter = Router();
@@ -12,5 +12,5 @@ studentsRouter.route("/:id")
                             .get(getStudentById)
                             .put(updateStudent)
 
- studentsRouter.route("/:email")
-                            .get(getStudentByLogIn)
+studentsRouter.route("/:email/:password")
+                            .get(getStudentByLogin)
