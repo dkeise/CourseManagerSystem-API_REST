@@ -28,10 +28,10 @@ export function getStudentByLoginFromFirestore(email: string, password: string):
         const db = admin.firestore();
         db.collection("Students").where("email", "==", email).get()
         .then((result:QuerySnapshot) => {
-            result.docs.map( teacher => { 
-                const newT = new Student(teacher.data());
-                if (newT.password == password) {
-                    resolve (newT);
+            result.docs.map( student => { 
+                const newS = new Student(student.data());
+                if (newS.password == password) {
+                    resolve (newS);
                 }
             });
             reject(result);
