@@ -9,7 +9,7 @@ export function getStudentByIdFromFirestore(idOfStudent:string):Promise<any>{
     return new Promise<any>((resolve,reject)=>{
         const db:Firestore = admin.firestore();
 
-            db.collection("students").doc(idOfStudent).get().then((document:DocumentSnapshot)=>{
+            db.collection("Students").doc(idOfStudent).get().then((document:DocumentSnapshot)=>{
             if(document.exists){
                 const studentDoc = new Student(document.data());
                 studentDoc.id    = document.id;
@@ -43,7 +43,7 @@ export function getStudentByLoginFromFirestore(email: string, password: string):
 export function getAllStudentsFromFirestore():Promise<any> {
     return new Promise<any>((resolve,reject)=>{
         const db = admin.firestore();
-        db.collection("students").get().then(snapshot=>{
+        db.collection("Students").get().then(snapshot=>{
             const listOfStudent = Array<Student>();
             for (const doc of snapshot.docs){
                 const student = new Student(doc.data());
@@ -60,7 +60,7 @@ export function getAllStudentsFromFirestore():Promise<any> {
 export function insertStudentToFirestore(student:Student):Promise<any> {
     return new Promise<any>((resolve,reject)=>{
         const db = admin.firestore();
-        db.collection("students").add(student).then((snapshot:DocumentReference)=>{
+        db.collection("Students").add(student).then((snapshot:DocumentReference)=>{
             snapshot.get().then((value:DocumentSnapshot)=>{
                const studentDoc = new Student(value.data());
                 studentDoc.id    = value.id;
@@ -78,7 +78,7 @@ export function insertStudentToFirestore(student:Student):Promise<any> {
 export function updateStudentById(idOfStudent:any,updates:any):Promise<any>{
     return new Promise<any>((resolve,reject)=>{
         const db = admin.firestore();
-        db.collection("students").doc(idOfStudent).update(updates)
+        db.collection("Students").doc(idOfStudent).update(updates)
         .then(result=>{resolve(result)})
         .catch(error=>{reject(error)});
     });
