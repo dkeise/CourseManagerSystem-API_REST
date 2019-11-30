@@ -2,10 +2,10 @@
 
 # Arquitetura Model-Routes-Service-Controller
 
-Model          = Modelo de dados.
-Routes         = Rotas de acesso da API.
-Controllers    = Funções Middleware para interagir com as rotas.
-Services(DAO)  = DAO.
+* Model: Modelo de dados.
+* Routes: Rotas de acesso da API.
+* Controllers: Funções Middleware para interagir com as rotas.
+* Services(DAO): DAO.
 
 API Rest feito em TypeScript, utilizado Firebase Firestorm Database.
 Trabalho de tela de login, com operação de CRUD para Pós em Engenharia de Software 
