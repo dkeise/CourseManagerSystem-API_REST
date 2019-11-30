@@ -19,20 +19,24 @@ Padrões de resposta HTTP:
 
 Estudantes
     Rotas:
-        //Retorna todos os studantes com método GET
+        Retorna todos os studantes com método GET:
         https://us-central1-course-manager-system.cloudfunctions.net/api/students/
-        //Retorna um studante específico pelo seu ID com método GET
+       
+       	Retorna um studante específico pelo seu ID com método GET:
         https://us-central1-course-manager-system.cloudfunctions.net/api/students/:id
-        //Retorna um estudante específico pelo seu email e senha
+	
+        Retorna um estudante específico pelo seu email e senha:
         https://us-central1-course-manager-system.cloudfunctions.net/api/students/:email/:password
 
 Professores
     Rotas:
-        //Retorna todos os professores com método GET
+        Retorna todos os professores com método GET:
         https://us-central1-course-manager-system.cloudfunctions.net/api/teachers/
-        //Retorna um professor específico pelo seu ID com método GET
+	
+        Retorna um professor específico pelo seu ID com método GET:
         https://us-central1-course-manager-system.cloudfunctions.net/api/teachers/:id
-        //Retorna um professor específico pelo seu email e senha
+	
+        Retorna um professor específico pelo seu email e senha:
         https://us-central1-course-manager-system.cloudfunctions.net/api/teachers/:email/:password
 
        
