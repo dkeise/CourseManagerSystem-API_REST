@@ -4,13 +4,13 @@ import { Router } from 'express';
 
 export const studentsRouter = Router();
 
-studentsRouter.route("/")
+studentsRouter.route("/") // rota 
                                 .get(getStudents)
                                 .post(insertStudent);
 
-studentsRouter.route("/:id")
+studentsRouter.route("/:id")  // rota 
                             .get(getStudentById)
                             .put(updateStudent)
 
-studentsRouter.route("/:email/:password")
+studentsRouter.route("/:email/:password")  // rota 
                             .get(getStudentByLogin)
